@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Form</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form id="register-form">
+        <fieldset>
+          <legend>Form</legend>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="text-dark" for="registration-email">Email</label>
+            <input
+              class="form-control"
+              name="registrationemail"
+              placeholder="Email"
+              type="email"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="text-dark" for="registration-password1"
+              >Password</label
+            >
+            <input
+              class="form-control"
+              name="registrationpassword1"
+              id="password"
+              placeholder="Contraseña"
+              type="password"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label class="text-dark" for="registration-password2"
+              >Repeat Password</label
+            >
+            <input
+              class="form-control"
+              name="registrationpassword2"
+              placeholder="Repita la contraseña"
+              type="password"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label class="text-dark" for="registration-city">City</label>
+            <input
+              type="text"
+              id="registration-city"
+              name="registrationcity"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label class="text-dark" for="registration-state">State</label>
+            <select
+              id="registratio-nstate"
+              name="registrationstate"
+              class="form-control"
+            >
+              <option value="" selected>Select a State</option>
+              <option value="state1">State1</option>
+              <option value="state2">State2</option>
+              <option value="state3">State3</option>
+              <option value="state4">State4</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label class="text-dark" for="registration-zipcode">Zip Code</label>
+            <input
+              type="text"
+              class="form-control"
+              name="registrationzipcode"
+              id="registration-zipcode"
+            />
+          </div>
+        </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="terms"
+            id="terms"
+          />
+          <label class="form-check-label" for="terms"
+            >I accept terms of agreement.</label
+          >
+        </div>
+        <div class="form-row mt-2">
+          <input class="btn btn-primary" type="submit" value="Sign Up" />
+        </div>
+      </form>
+    </div>
+    <!-- Bootstrap  -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Jquery  -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"
+    ></script>
+    <script type="text/javascript" src="js/register_validation.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.validator.setDefaults({
+          errorClass: 'invalid-feedback',
+          highlight: function (element) {
+            $(element).addClass('is-invalid');
+          },
+          unhighlight: function (element) {
+            $(element).removeClass('is-invalid');
+          },
+          errorPlacement: function (error, element) {
+            if (element.prop('type') === 'checkbox') {
+              error.insertAfter(element.parent());
+            } else {
+              error.insertAfter(element);
+            }
+          },
+        });
+        //
+        $.validator.addMethod(
+          'strongPassword',
+          function (value, element) {
+            return (
+              this.optional(element) ||
+              (value.length >= 6 && /\d/.test(value) && /[a-z]/i.test(value))
+            );
+          },
+          'Password should contain at least 6 characters, 1 number and 1 letter.'
+        );
+        //
+        $('#register-form').validate({
+          rules: {
+            registrationemail: {
+              required: true,
+              email: true,
+            },
+            registrationpassword1: {
+              required: true,
+              strongPassword: true,
+            },
+            registrationpassword2: {
+              required: true,
+              equalTo: '#password',
+            },
+            registrationcity: {
+              required: true,
+              lettersonly: true,
+            },
+            registrationstate: {
+              required: true,
+            },
+            registrationzipcode: {
+              required: true,
+              number: true,
+            },
+            terms: {
+              required: true,
+            },
+          },
+          messages: {
+            registrationemail: {
+              required: 'This is a mandatory field.',
+              email: 'Please, write a valid email address',
+            },
+            registrationpassword1: {
+              required: 'This is a mandatory field.',
+
+              minlength: 'Please, write less than {0} characters.',
+            },
+            registrationpassword2: {
+              required: 'This is a mandatory field.',
+
+              minlength: 'Please, write less than {0} characters.',
+              equalTo: 'La contraseña no coincide. ',
+            },
+            registrationcity: {
+              required: 'This is a mandatory field.',
+
+              minlength: 'Please, do not write numbers.',
+            },
+            registrationstate: {
+              required: 'Select a state.',
+            },
+            registrationzipcode: {
+              required: 'This is a mandatory field.',
+
+              number: 'Zip code is not valid',
+              minlength: 5,
+            },
+            terms: {
+              required: 'This field is required.',
+            },
+          },
+        });
+        //
+        $('#register-form').on('submit', function (e) {
+          e.preventDefault();
+          if ($('#register-form').valid()) {
+            alert('form sent');
+          } else {
+            alert('form not valid');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
