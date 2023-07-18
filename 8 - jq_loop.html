@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Target Elements</title>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <!--  cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $('p').each(function (index, element) {
+          $(element).text(`${index + 1} - New item here`);
+          // element is the same as "this"
+          // each is the same as forEach in Vanilla
+          if (index === 2) {
+            $(element)
+              .css('background-color', 'lightpink')
+              .css('color', 'white');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
