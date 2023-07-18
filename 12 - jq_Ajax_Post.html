@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Ajax</title>
+  </head>
+  <body>
+    <div>
+      <p>A Post Ajax Request:</p>
+      <kbd>
+        $.post('url', {dataTheObjectThatWillBeSentToOurServer}, function (data)
+        { });
+      </kbd>
+      <p>httpbin.org will give us our data back after we send it</p>
+    </div>
+
+    <!--  cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $.post('https://httpbin.org/post', { hello: 'World' }, function (data) {
+          console.log('Post request: ');
+          console.log(data);
+        });
+      });
+    </script>
+  </body>
+</html>
