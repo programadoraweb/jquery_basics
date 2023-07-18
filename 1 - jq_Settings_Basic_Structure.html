@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Structure</title>
+  </head>
+  <body>
+    <!--  1- 
+        vs code jquery code snippets snippet eg. jqclassadd , jqclassremove -->
+
+    <!--  2 - cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      /* 3.1 - basic version (below): */
+      $(document).ready(function () {
+        // when this document is ready, this function will be executed
+        // jquery code in here
+        $('button').addClass('animated bounce');
+        // html element + jq function
+      });
+
+      /*  or 3.2 -  short version (below): 
+    $(function () { // jquery code in here
+        alert("Hello Future");
+     }); */
+
+      /* 3.3 - long version (below): 
+$.when($.ready, $.getScript("fileName.js")).then(function() {
+//document ready
+}).catch( function(){
+console.log("error msg")
+}) */
+    </script>
+  </body>
+</html>
