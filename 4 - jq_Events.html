@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Events</title>
+    <style>
+      .pink {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="pink">Hi There</button>
+
+    <!--  cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        //when the event (click) happens, the function will be executed:
+        $('button').click(function () {
+          console.log('click');
+        }); // option 1
+
+        $('button').on('click', function (e) {
+          e.preventDefault();
+          $('button').removeClass('pink');
+          console.log('second click');
+        }); // option 2 - the BEST OPTION for your web to be ajax proof
+
+        $(document).on('click', 'button', function () {
+          console.log('33333');
+        }); // option 3
+      });
+    </script>
+  </body>
+</html>
