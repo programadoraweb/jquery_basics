@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Structure</title>
+    <style>
+      .blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">Hi Functions</button>
+    <input type="text" name="" id="" />
+    <!--  cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      /*  You can add a jq functions to a target element as bellow:  */
+      $(document).ready(function () {
+        // .adClass()
+        $('button').addClass('btn-primary');
+        // .adClass() with .setTimeout()
+        setTimeout(function () {
+          $('button').addClass('blue', function (event) {});
+        }, 4000);
+        // .removeClass()
+        $('button').removeClass('btn-primary');
+        // .css() //custom css
+        $('button').css('color', 'blue');
+        // .prop()
+        $('button').prop('disabled', 'true');
+        // .html()
+        $('button').html('<h1>Hello Future</h1>');
+        // .text()
+        $('button').text('<h1>Now I m an H1 </h1>');
+        // .val()
+        $('input').val('new val for this input');
+        // .prepend() //add before an element
+        $('button').prepend('prepend new text');
+        // .append()  // add after an element
+        $('button').append('append new text');
+        // .remove() //remove an element
+        $('button').remove();
+        // .toggleClass() //toggle sth on and off from an element
+        $('button').toggleClass('display-4');
+        // .before()
+        $('button').before(' BEFORE.');
+        // .after()
+        $('button').after(' after.');
+        // .clone() //clone an element
+        $('button').clone();
+        // functions chaining //adding functions
+        $('button').clone().appendTo('#right-div');
+        // .show // show an element
+        $('button').show();
+        // .hide // hide an element
+        $('button').hide();
+        // .hasClass (return a boolean true or false)
+        $('button').hasClass('className');
+        // .attr // changes elements attributes
+        $('input').attr('type', 'email');
+      });
+    </script>
+  </body>
+</html>
