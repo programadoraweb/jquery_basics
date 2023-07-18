@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic JQuery Ajax</title>
+  </head>
+  <body>
+    <div>
+      <p>A Get Ajax Request:</p>
+      <kbd> $.get('https://swapi.dev/api/people/1/') </kbd>
+    </div>
+    <div>
+      <p>A Get Ajax Request with a Callback:</p>
+      <kbd> $.get('https://swapi.dev/api/people/1/', function (data) {} </kbd>
+    </div>
+    <!--  cdn  -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $.get('https://swapi.dev/api/people/1/', function (data) {
+          console.log('Get request: ');
+          console.log(data);
+          console.log(data['name']);
+          console.log(data['height']);
+          console.log(data['mass']);
+        });
+      });
+    </script>
+  </body>
+</html>
